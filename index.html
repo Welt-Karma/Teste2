@@ -4,46 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amor Infinito</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffe6f2;
-            color: #b30059;
-            text-align: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 400px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            font-size: 24px;
-        }
-        p {
-            font-size: 18px;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 10px;
-            font-size: 16px;
-            color: white;
-            background-color: #ff6699;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Bem-vindo ao Amor Infinito</h1>
-        <p>"O amor é a poesia dos sentidos." - Honoré de Balzac</p>
-        <a href="#" class="button">Descubra mais</a>
+        <h1>Seja bem-vindo!</h1>
+
+        <h2>Escreva sua carta Pra A ou W</h2>
+        <input type="text" id="letterTitle" placeholder="Dá um nome para sua carta">
+        <input type="text" id="authorName" placeholder="Qual é o seu nome?">
+        <textarea id="loveLetter" placeholder="Manda ver, escreva sua carta aqui..."></textarea>
+        <button class="button" onclick="saveLetter()">Salvar a carta</button>
+
+        <h2>Cartas que você já escreveu</h2>
+        <ul id="lettersList"></ul>
+        <button class="button delete-button" onclick="deleteSelectedLetters()">Apagar as cartas que você escolheu</button>
     </div>
+
+    <!-- Modal para exibir a carta -->
+    <div class="modal" id="modal" style="display: none;">
+        <div class="modal-content">
+            <h3 id="modalTitle"></h3>
+            <p id="modalText"></p>
+            <button onclick="closeModal()">Fechar</button>
+            <button id="installButton" class="button" onclick="installLetter()">Instalar Carta</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
