@@ -13,6 +13,18 @@ function saveLetter() {
     letters.push({ title, author, text: letterText, date: currentDate });
     localStorage.setItem("letters", JSON.stringify(letters));
 
+    // Enviar a carta para o servidor para salvar como arquivo de texto
+    fetch("http://localhost:3000/salvar-carta", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, author, text: letterText }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+    })
+    .catch(error => console.error("Erro ao salvar a carta no servidor:", error));
+
     document.getElementById("letterTitle").value = "";
     document.getElementById("authorName").value = "";
     document.getElementById("loveLetter").value = "";
